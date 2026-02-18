@@ -16,15 +16,52 @@ def startorder():
     print("please select products:\n")
     print(item1.name,"  ",item1.price,"\n",item2.name,"  ",item2.price,"\n",item3.name,"  ",item3.price)
 
-def select():
-    a=int(input("1-3\n"))
-    index=a-1
-    if a >len(index) or index<0:
-        print("Item not found")
+
+def fullorder():
+    order=[]
+    keep_ordering=True
+  
+    while keep_ordering == True:
+        a=int(input("1-3\n"))
+        index=a-1
+        if a>len(items) or index<0:
+            print("Item not found\n Please select a valid item.")
+            continue
+        
+        else:
+            order.append(items[index])
+            print(items[index].name,"---",items[index].price)
+
+        print("Ordder more? (y/n)")
+        answer=input()
+        if answer=="y":
+            keep_ordering=True
+        elif answer=="n":
+            keep_ordering=False
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
+            keep_ordering=True
     
-    else:
-        print(items[index].name,"---",items[index].price)
+    return order
+
+def receipt(order):
+    total = 0
+    for item in order:
+        total += item.price
+        print(item.name,"---",item.price)
+    print("Your total is: $", total)
+    return total
+
+def payment(total):
+    payment=int(input("Enter payment amount:\n"))
+    if payment<total:
+        print("insufficient payment!")
+
+    elif payment==total:
+        print("Payment successful! Thank you for your purchase.")
+
 
 startorder()
-select()
-
+order = fullorder()
+total = receipt(order)
+payment(total)
