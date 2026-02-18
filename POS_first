@@ -1,0 +1,30 @@
+class menu:
+    def __init__(self, name, price):
+        self.name=name
+        self.price=price
+    
+    
+item1=menu("hamburger",3.00)
+item2=menu("fries",1.00)
+item3=menu("sprite",2.00)
+
+items=[item1,item2,item3]
+
+
+
+def startorder():
+    print("please select products:\n")
+    print(item1.name,"  ",item1.price,"\n",item2.name,"  ",item2.price,"\n",item3.name,"  ",item3.price)
+
+def select():
+    a=int(input("1-3\n"))
+    index=a-1
+    if a >len(index) or index<0:
+        print("Item not found")
+    
+    else:
+        print(items[index].name,"---",items[index].price)
+
+startorder()
+select()
+
