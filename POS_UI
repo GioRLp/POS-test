@@ -1,0 +1,6 @@
+import customtkinter as ctk
+
+Ui=ctk.CTk()
+Ui.geometry("1280x720")
+
+Ui.mainloop()
